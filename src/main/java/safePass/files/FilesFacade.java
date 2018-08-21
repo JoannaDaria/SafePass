@@ -1,5 +1,4 @@
 package safePass.files;
-
 import safePass.model.PasswordEntry;
 
 import java.io.IOException;

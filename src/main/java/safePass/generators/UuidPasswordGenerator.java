@@ -1,5 +1,7 @@
 package safePass.generators;
-        import java.util.UUID;
+
+import java.util.UUID;
+
 class UuidPasswordGenerator implements PasswordGenerator {
     @Override
     public String generate(int length) {
@@ -9,6 +11,7 @@ class UuidPasswordGenerator implements PasswordGenerator {
         }
         return sb.toString().substring(0, length);
     }
+
     @Override
     public GeneratorType getType() {
         return GeneratorType.UUID;
