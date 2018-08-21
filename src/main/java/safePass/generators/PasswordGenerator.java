@@ -1,9 +1,10 @@
 package safePass.generators;
-
 import java.util.Random;
+interface PasswordGenerator {
+    String generate(int length);
+    GeneratorType getType();
+}
 
-public class PasswordGenerator {
-    String pass;
 
 //    public int[] countBound(char type) {    //helps getting proper chars in ascii
 //        switch (type) {
@@ -26,8 +27,8 @@ public class PasswordGenerator {
 //        return int[2]={b,p};
 //    }
 
-
-    public static String passGen(int a) {  //wylosuj ascii n razy
+///MOJA WERSJA ALE BARDZO DOBRA NAPRAWDĘ PYSZANAA
+/*    public static String passGen(int a) {  //wylosuj ascii n razy
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
         char next;
@@ -38,7 +39,7 @@ public class PasswordGenerator {
             pass = sb.append(next).toString();
         }
         return pass;
-    }
+    }*/
 
 //    public static String passGen(int a, char t) {  //wylosuj ascii n razy
 //        Random random = new Random();
@@ -54,5 +55,3 @@ public class PasswordGenerator {
 //        }
 //        return pass;
 //    }
-
-}

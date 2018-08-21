@@ -1,6 +1,4 @@
 package safePass.files;
-import safePass.files.AbstractFileReader;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -14,8 +12,8 @@ class BufferedFileReader extends AbstractFileReader {
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
             String line = reader.readLine();
             while (line != null) {
-                line = reader.readLine();
                 result.add(line);
+                line = reader.readLine();
             }
         }
         return result;
