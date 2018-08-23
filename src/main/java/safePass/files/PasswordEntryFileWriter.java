@@ -1,7 +1,6 @@
-package safePass.files;
-
+package SafePass.files;
 import com.opencsv.CSVWriter;
-import safePass.model.PasswordEntry;
+import SafePass.model.PasswordEntry;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,15 +15,16 @@ class PasswordEntryFileWriter {
     private static String PATH = "C:\\SafePass\\storage";
 
 
-    void writeToFile(String path, List<PasswordEntry> passwordEntries) throws URISyntaxException, IOException {
+    void writeToFile(String path, List<PasswordEntry> passwordEntries, String securityKey) throws URISyntaxException, IOException {
         CSVWriter csvWriter = new CSVWriter(
                 new FileWriter(Paths.get(PATH + "\\" + path).toFile(), true), ';',
-                DEFAULT_QUOTE_CHARACTER,
+                NO_QUOTE_CHARACTER,
                 NO_ESCAPE_CHARACTER,
                 DEFAULT_LINE_END);
         for (PasswordEntry passwordEntry : passwordEntries) {
-            csvWriter.writeNext(passwordEntry.toArray());
+            csvWriter.writeNext(passwordEntry.toEncryptedArray(securityKey));
         }
         csvWriter.close();
     }
+
 }
