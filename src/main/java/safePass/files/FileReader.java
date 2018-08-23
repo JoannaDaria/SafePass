@@ -1,5 +1,6 @@
 package safePass.files;
 import safePass.model.PasswordEntry;
+
 import java.io.IOException;
 import java.util.List;
 interface FileReader {

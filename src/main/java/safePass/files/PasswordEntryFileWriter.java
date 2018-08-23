@@ -1,29 +1,30 @@
-package safePass.files;
-import safePass.model.PasswordEntry;
-
+package SafePass.files;
 import com.opencsv.CSVWriter;
-import java.io.File;
+import SafePass.model.PasswordEntry;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.List;
 
-import static com.opencsv.CSVWriter.DEFAULT_LINE_END;
-import static com.opencsv.CSVWriter.DEFAULT_QUOTE_CHARACTER;
-import static com.opencsv.CSVWriter.NO_ESCAPE_CHARACTER;
+import static com.opencsv.CSVWriter.*;
 
 class PasswordEntryFileWriter {
 
-    void writeToFile(String path, List<PasswordEntry> passwordEntries) throws URISyntaxException, IOException {
-        ClassLoader classLoader = getClass().getClassLoader();
+    private static String PATH = "C:\\SafePass\\storage";
+
+
+    void writeToFile(String path, List<PasswordEntry> passwordEntries, String securityKey) throws URISyntaxException, IOException {
         CSVWriter csvWriter = new CSVWriter(
-                new FileWriter(new File(path), true), ';',
-                DEFAULT_QUOTE_CHARACTER,
+                new FileWriter(Paths.get(PATH + "\\" + path).toFile(), true), ';',
+                NO_QUOTE_CHARACTER,
                 NO_ESCAPE_CHARACTER,
                 DEFAULT_LINE_END);
         for (PasswordEntry passwordEntry : passwordEntries) {
-            csvWriter.writeNext(passwordEntry.toArray());
+            csvWriter.writeNext(passwordEntry.toEncryptedArray(securityKey));
         }
         csvWriter.close();
     }
+
 }

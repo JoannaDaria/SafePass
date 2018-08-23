@@ -1,2 +1,2 @@
-# SafePass
-Password Manager - generate and remember safe passwords for all your services.
+**# SafePass
+Password Manager - generate and remember safe passwords for all your services.**
